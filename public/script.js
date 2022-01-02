@@ -52,16 +52,18 @@ socket.on("failed", showError);
 socket.on("moveMade", updateBoard);
 
 document.querySelector(".createroom").addEventListener("click", (e) => {
-  socket.emit("createRoom", { name: document.querySelector(".name").value });
   document.querySelector(".board-overlay").classList.add("hide");
+  resetBoard();
+  socket.emit("createRoom", { name: document.querySelector(".name").value });
 });
 
 document.querySelector(".joinroom").addEventListener("click", (e) => {
+  document.querySelector(".board-overlay").classList.add("hide");
+  resetBoard();
   socket.emit("joinRoom", {
     name: document.querySelector(".name").value,
     roomID: document.querySelector(".joinRoom_ID").value,
   });
-  document.querySelector(".board-overlay").classList.add("hide");
 });
 
 document.querySelector(".homeBtn").addEventListener("click", (e) => {
@@ -127,6 +129,17 @@ function updateBoard(board, playerID) {
       const cell = document.querySelector(`#r${i}c${j}`);
       cell.innerText = board[i][j];
       cell.style.color = board[i][j] == "_" ? "rgba(0, 0, 0, 0)" : "#ffa3a5";
+    }
+  }
+}
+
+function resetBoard() {
+  document.querySelector(".board").classList.remove("board-blocked");
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      const cell = document.querySelector(`#r${i}c${j}`);
+      cell.innerText = "_";
+      cell.style.color = "rgba(0, 0, 0, 0)";
     }
   }
 }
