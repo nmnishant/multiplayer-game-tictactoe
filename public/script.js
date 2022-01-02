@@ -28,12 +28,12 @@ socket.on("playerWon", ({ playerID }) => {
   const overlay = document.querySelector(".board-overlay");
   overlay.classList.remove("hide", "winner", "lose");
   if (socket.id == playerID) {
-    overlay.children[0].src = "/winner.png";
+    overlay.children[0].src = "/img/winner.png";
     overlay.children[1].innerText = "You win !!!";
     overlay.classList.add("winner");
     progressBar.style.background = "#2ecc71";
   } else {
-    overlay.children[0].src = "/lose.png";
+    overlay.children[0].src = "/img/lose.png";
     overlay.children[1].innerText = "You lose !!!";
     overlay.classList.add("lose");
     progressBar.style.background = "#e74c3c";
