@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Tic Tac Toe</title>
+  <link rel="shortcut icon" href="/img/favicon.png">
+  <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <script defer src="/script.js"></script>
+</head>
+
+<body>
+
+  <i class="im im-home homeBtn"></i>
+  <i class="im im-sun" data-mode='light'></i>
+  <div class="progressBar"></div>
+  <div class="error-alert error hide">Something went wrong</div>
+  
+  <div class="container">
+
+    <div class="step-container step-1">
+      <div class="step">
+        <div class="headText">Alias Name</div>
+        <input type="text" class="input-field name" placeholder="Enter your name">
+        <div class="btn-container">
+          <div class="form-btn enterroom">Join Room</div>
+          <div class="form-btn createroom">Create Room</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-container step-2">
+      <div class="step">
+        <div class="headText">Room ID</div>
+        <input type="text" class="input-field joinRoom_ID" placeholder="Enter Room ID">
+        <div class="btn-container">
+          <div class="form-btn backBtn">Back</div>
+          <div class="form-btn joinroom">Join</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-container step-3">
+      <div class="step">
+        <div class="room-container">
+          <div class="room">
+            <div class="headText">Room ID</div>
+            <input type="text" class="input-field roomID" disabled="disabled" value="Error">
+            <div class="headText playerName"># Error</div>
+          </div>
+          <div class="spinner">
+            <img class="spinner" src="/img/waitLogo-light.svg" alt="Spinner">
+            <img class="spinner hide" src="/img/waitLogo-dark.svg" alt="Spinner">
+          </div>
+        </div>
+        <div class="btn-container">
+          <div class="form-btn copyBtn">Copy</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-container step-4">
+      <div class="headText head">
+        <img class="tic-tac-toe-logo" src="/img/logo.png" alt="logo">
+        <p>Tic Tac Toe</p>
+      </div>
+      <div class="board-container">
+        <div class="board">
+            <button id="r0c0" class="cell" data-row=0 data-col=0>_</button> <button id="r0c1" class="cell" data-row=0 data-col=1>_</button> <button id="r0c2" class="cell" data-row=0 data-col=2>_</button>
+            <button id="r1c0" class="cell" data-row=1 data-col=0>_</button> <button id="r1c1" class="cell" data-row=1 data-col=1>_</button> <button id="r1c2" class="cell" data-row=1 data-col=2>_</button>
+            <button id="r2c0" class="cell" data-row=2 data-col=0>X</button> <button id="r2c1" class="cell" data-row=2 data-col=1>_</button> <button id="r2c2" class="cell" data-row=2 data-col=2>_</button>
+        </div>
+        <div class="board-overlay lose hide">
+          <img src="/img/winner.png" class="status-icon" alt="Winner">
+          <p>You win !!!</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+ 
+</body>
+</html>
