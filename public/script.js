@@ -51,17 +51,17 @@ socket.on("failed", showError);
 
 socket.on("moveMade", updateBoard);
 
-document
-  .querySelector(".createroom")
-  .addEventListener("click", (e) =>
-    socket.emit("createRoom", { name: document.querySelector(".name").value })
-  );
+document.querySelector(".createroom").addEventListener("click", (e) => {
+  socket.emit("createRoom", { name: document.querySelector(".name").value });
+  document.querySelector(".board-overlay").classList.add("hide");
+});
 
 document.querySelector(".joinroom").addEventListener("click", (e) => {
   socket.emit("joinRoom", {
     name: document.querySelector(".name").value,
     roomID: document.querySelector(".joinRoom_ID").value,
   });
+  document.querySelector(".board-overlay").classList.add("hide");
 });
 
 document.querySelector(".homeBtn").addEventListener("click", (e) => {
